@@ -1,8 +1,5 @@
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.IOException;
-import java.util.HashSet;
-import java.util.StringTokenizer;
+import java.io.*;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException{
@@ -17,12 +14,14 @@ public class Main {
         
         int m = Integer.parseInt(br.readLine());
         st = new StringTokenizer(br.readLine());
+        StringBuilder sb = new StringBuilder();
         for (int i=0; i<m; ++i) {
             int a = Integer.parseInt(st.nextToken());
             if (set.contains(a))
-                System.out.print("1 ");
+                sb.append("1 ");
             else
-                System.out.print("0 ");
+                sb.append("0 ");
         }
+        System.out.print(sb);
     }
 }
