@@ -10,14 +10,18 @@ public class Main {
             arr[i] = i+1;
         }
         for (int i=0; i < M; i++) {
-            int x = sc.nextInt();
-            int y = sc.nextInt();
-            for (int j=0; j<(y-x+1)/2; ++j){
-                swap(arr, x - 1 + j, y - 1 -j);
+            int x = sc.nextInt() - 1;
+            int y = sc.nextInt() - 1;
+            while (x < y) {
+                swap(arr, x, y);
+                ++x;
+                --y;
             }
         }
+        StringBuilder sb = new StringBuilder();
         for (int i=0; i < arr.length; i++)
-            System.out.print(arr[i] + " ");
+            sb.append(arr[i] + " ");
+        System.out.println(sb);
     }
     public static void swap(int[] a, int i, int j) {
         int tmp = a[i];
