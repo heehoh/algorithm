@@ -6,7 +6,7 @@ public class Main {
         int n = sc.nextInt();
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < n; ++i) {
-            sb.append(i + 1 + "\n");
+            sb.append(i + 1).append("\n");
         }
         System.out.println(sb);
     }
