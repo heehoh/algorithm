@@ -11,7 +11,7 @@ public class Main {
             StringTokenizer st = new StringTokenizer(br.readLine());
             String str = st.nextToken();
             if(str.equals("all"))
-                s |= (~0);
+                s = (~0);
             else if (str.equals("empty"))
                 s = 0;
             else {
