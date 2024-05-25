@@ -6,19 +6,22 @@ using namespace std;
 
 int N;
 
+int check(vector<int> &v, int deps, int val) {
+    for (int i = 0; i < deps; i++) {
+        if (v[i] == val || abs(i - deps) == abs(v[i] - val))
+            return 0;
+    }
+    return 1;
+}
+
+
 void DFS(vector<int> &v, int deps, int &num) {
     if (deps == N) {
         ++num;
         return;
     }
     for (int i = 0; i < N; i++) {
-        int j = 0;
-        for (; j < deps; j++) {
-            if (v[j] == i || abs(v[j] - i) == abs(j - deps)) {
-                break;
-            }
-        }
-        if (j == deps) {
+        if (check(v, deps, i)) {
             v[deps] = i;
             DFS(v, deps + 1, num);
         }
