@@ -11,33 +11,31 @@ struct Point {
 int map[100];
 bool visited[100];
 
-void BFS() {
+int BFS() {
     int n = 0;
     queue<Point> q;
     q.push({1, 0});
-    visited[0] = true;
+    visited[1] = true;
     
     while (1) {
         Point p = q.front(); q.pop();
 
-        for (int i = 1; i <= 6;i++){
-            int nx = p.pos + i; // 다음 좌표
-            if(nx == 100){
-                cout << p.num +1; // 도착했으면 출력
-                return;
+        if (p.pos == 100)
+            return p.num;
+        for (int i = 1; i <= 6; i++) {
+            int pos = p.pos + i;
+            if (pos == 100) {
+                return p.num + 1;
             }
-            else if(nx < 100){ // 100보다 작은 좌표라면 
-                while(map[nx] != 0){ // 사다리 혹은 뱀인지 확인
-                    nx = map[nx]; // 점프한 자리로 이동
-                }
-                if(!visited[nx]){ // 처음 방문한 좌표일때
-                    q.push({nx, p.num + 1}); // 큐에 넣어줌
-                    visited[nx] = true; // 방문처리
-                }
-                
-            }
+            while (map[pos])
+                pos = map[pos];
+            if (visited[pos])
+                continue;
+            visited[pos] = true;
+            q.push({pos, p.num + 1});
         }
     }
+    return 0;
 }
 
 int main() {
@@ -53,5 +51,5 @@ int main() {
         map[x] = y;
     }
     
-    BFS();
+    cout << BFS();
 }
