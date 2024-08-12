@@ -17,21 +17,21 @@ void preorder(vector<Node> &v, char c) {
     preorder(v, v[c - 'A'].right);
 }
 
-void midorder(vector<Node> &v, char c) {
+void inorder(vector<Node> &v, char c) {
     if (c == '.')
         return;
  
-    midorder(v, v[c - 'A'].left);
+    inorder(v, v[c - 'A'].left);
     cout << c;
-    midorder(v, v[c - 'A'].right);
+    inorder(v, v[c - 'A'].right);
 }
 
-void lastorder(vector<Node> &v, char c) {
+void postorder(vector<Node> &v, char c) {
     if (c == '.')
         return;
     
-    lastorder(v, v[c - 'A'].left);
-    lastorder(v, v[c - 'A'].right);
+    postorder(v, v[c - 'A'].left);
+    postorder(v, v[c - 'A'].right);
     cout << c;
 }
 
@@ -45,7 +45,7 @@ int main() {
     }
     preorder(v, 'A');
     cout << '\n';
-    midorder(v, 'A');
+    inorder(v, 'A');
     cout << '\n';
-    lastorder(v, 'A');
+    postorder(v, 'A');
 }
