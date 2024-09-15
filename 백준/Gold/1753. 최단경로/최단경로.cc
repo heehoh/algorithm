@@ -2,6 +2,8 @@
 #include <vector>
 #include <queue>
 using namespace std;
+#define X first
+#define Y second
 
 int v,e,st;
 
@@ -27,12 +29,12 @@ int main() {
         auto cur = pq.top(); pq.pop();
         
         // 거리가 dist에 있는 값과 다를 경우 넘어감
-        if (dist[cur.second] != cur.first) continue;
-        for (auto nxt : adj[cur.second]) {
+        if (dist[cur.Y] != cur.X) continue;
+        for (auto nxt : adj[cur.Y]) {
             // 거리가 더 작을 때는 넘어감
-            if (dist[nxt.second] <= dist[cur.second] + nxt.first) continue;
-            dist[nxt.second] = dist[cur.second] + nxt.first;
-            pq.push({dist[nxt.second], nxt.second});
+            if (dist[nxt.Y] <= dist[cur.Y] + nxt.X) continue;
+            dist[nxt.Y] = dist[cur.Y] + nxt.X;
+            pq.push({dist[nxt.Y], nxt.Y});
         }
     }
     
