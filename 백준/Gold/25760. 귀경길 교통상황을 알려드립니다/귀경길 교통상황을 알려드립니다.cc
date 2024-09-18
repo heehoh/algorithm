@@ -46,7 +46,7 @@ int main() {
         if (C[i]) arr.push_back(visited[i]);
     }
     
-    sort(arr.rbegin(), arr.rend());
+    sort(arr.begin(), arr.end(), greater());
     int t = 0, mx = 0;
     for (auto i: arr) {
         mx = max(mx, i+t);
