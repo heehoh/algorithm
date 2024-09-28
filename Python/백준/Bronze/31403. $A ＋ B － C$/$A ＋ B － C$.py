@@ -1,0 +1,7 @@
+a = input()
+b = input()
+c = input()
+i = int(a) + int(b) - int(c)
+s = int(a+b) - int(c)
+print(i)
+print(s)
